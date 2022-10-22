@@ -2,14 +2,19 @@ const gameBoard = document.getElementById("game-board");
 const tools = document.querySelector(".tools");
 let groundCounter = document.querySelector(".soil-counter");
 let grassCounter = document.querySelector(".grass-counter");
-let stoneCounter = document.querySelector(".rock-counter");
-let woodCounter = document.querySelector(".leaves-counter");
+let rockCounter = document.querySelector(".rock-counter");
+let leavesCounter = document.querySelector(".leaves-counter");
 let treeCounter = document.querySelector(".tree-counter");
 let leafCounter = document.querySelector(".leaf-counter");
 const axe = document.querySelector(".axe");
 const pickaxe = document.querySelector(".pickaxe");
 const shovel = document.querySelector(".shovel");
 
+
+
+
+
+const myCounter={treeCounter:0,rockCounter:0,leafCounter:0,leavesCounter:0}
 axe.addEventListener("click", (e) => {
   currentTool = axe;
   axe.style.border = "1px solid red";
@@ -72,39 +77,47 @@ for (let i = 0; i < gameBoard.children.length; i++) {
   }
 }
 
-gameBoard.addEventListener("click", () => {
+gameBoard.addEventListener("click", (event) => {
   console.log(event.target.getAttribute("class"));
   if(event.target.getAttribute("class").includes("tree")){
     event.target.classList.remove("tree")
-
+    myCounter.treeCounter++
+    treeCounter.innerHTML=myCounter.treeCounter
   }
 });
 
-gameBoard.addEventListener("click", () => {
+gameBoard.addEventListener("click", (event) => {
     console.log(event.target.getAttribute("class"));
     if(event.target.getAttribute("class").includes("rock")){
       event.target.classList.remove("rock")
+      myCounter.rockCounter++
+      rockCounter.innerHTML=myCounter.rockCounter
     }
   });
-  gameBoard.addEventListener("click", () => {
+  gameBoard.addEventListener("click", (event) => {
     console.log(event.target.getAttribute("class"));
     if(event.target.getAttribute("class").includes("soil")){
       event.target.classList.remove("soil")
     }
   });
-  gameBoard.addEventListener("click", () => {
+  gameBoard.addEventListener("click", (event) => {
     console.log(event.target.getAttribute("class"));
     if(event.target.getAttribute("class").includes("leaf")){
       event.target.classList.remove("leaf")
+      myCounter.leafCounter++
+      leafCounter.innerHTML=myCounter.leafCounter
     }
   });
-  gameBoard.addEventListener("click", () => {
+  gameBoard.addEventListener("click", (event) => {
     console.log(event.target.getAttribute("class"));
     if(event.target.getAttribute("class").includes("leaves")){
       event.target.classList.remove("leaves")
+      myCounter.leavesCounter++
+      leavesCounter.innerHTML=myCounter.leavesCounter
+      
     }
   });
-  gameBoard.addEventListener("click", () => {
+  gameBoard.addEventListener("click", (event) => {
     console.log(event.target.getAttribute("class"));
     if(event.target.getAttribute("class").includes("grass")){
       event.target.classList.remove("grass")
