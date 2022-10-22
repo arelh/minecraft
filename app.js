@@ -1,6 +1,6 @@
 const gameBoard = document.getElementById("game-board");
 const tools = document.querySelector(".tools");
-let groundCounter = document.querySelector(".soil-counter");
+let soilCounter = document.querySelector(".soil-counter");
 let grassCounter = document.querySelector(".grass-counter");
 let rockCounter = document.querySelector(".rock-counter");
 let leavesCounter = document.querySelector(".leaves-counter");
@@ -14,7 +14,7 @@ const shovel = document.querySelector(".shovel");
 
 
 
-const myCounter={treeCounter:0,rockCounter:0,leafCounter:0,leavesCounter:0}
+const myCounter={treeCounter:0,rockCounter:0,leafCounter:0,leavesCounter:0,grassCounter:0,soilCounter:0}
 axe.addEventListener("click", (e) => {
   currentTool = axe;
   axe.style.border = "1px solid red";
@@ -98,6 +98,9 @@ gameBoard.addEventListener("click", (event) => {
     console.log(event.target.getAttribute("class"));
     if(event.target.getAttribute("class").includes("soil")){
       event.target.classList.remove("soil")
+      myCounter.soilCounter++
+      soilCounter.innerHTML=myCounter.soilCounter
+      
     }
   });
   gameBoard.addEventListener("click", (event) => {
@@ -121,6 +124,8 @@ gameBoard.addEventListener("click", (event) => {
     console.log(event.target.getAttribute("class"));
     if(event.target.getAttribute("class").includes("grass")){
       event.target.classList.remove("grass")
+      myCounter.grassCounter++
+      grassCounter.innerHTML=myCounter.grassCounter
     }
   });
 
